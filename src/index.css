@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities{
+  .hover-nav::after{
+    @apply content-[''] bg-white h-[3px] w-[100%] left-0 -bottom-[5px] absolute
+  }
+}
