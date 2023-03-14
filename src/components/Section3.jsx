@@ -7,7 +7,7 @@ const Section3 = () => {
           <h1 className='text-5xl font-extrabold mb-3 text-[#ECFEF2]'>SERVICES</h1>
           <Row className='lg:p-5 md:p-5 text-[#ECFEF2] lg:text-3xl md:text-2xl sm:text-[19px] font-bold'>
             <Col>
-              <span>Hematology</span>{' '}
+              <span>Hematology</span><br />
               <span>Serology</span><br />
               <span>Pre-Employment</span>
             </Col>

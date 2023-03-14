@@ -1,14 +1,15 @@
 import NavbarBtn from "./NavbarBtn";
 import { useState } from "react";
 import '../assets/styles/link-underline-animation.css'
+import { Link } from "react-router-dom";
 
 const NavbarComponents = () => {
   let Links =[
     {name:"HOME",link:"/"},
-    {name:"SERVICES",link:"/"},
-    {name:"RESULTS",link:"/"},
-    {name:"ABOUT US",link:"/"},
-    {name:"FAQ",link:"/"},
+    {name:"SERVICES",link:"/services"},
+    {name:"RESULTS",link:"/results"},
+    {name:"ABOUT US",link:"/aboutus"},
+    {name:"FAQ",link:"/faq"},
   ];
   const [open, setOpen] = useState(false);
   const [navbar, setNavbar] = useState(false);
@@ -28,7 +29,7 @@ const NavbarComponents = () => {
     <div className={`shadow w-full ${navbar ? 'navbar active':'navbar'} fixed top-0 left-0`}>
       <div className="md:flex items-center justify-between py-4 md:px-10 px-7">
         <div className="font-bold text-2xl flex items-center font-sora mr-1 pt-2">
-          cLinic.
+          <Link to='/'>cLinic.</Link>
         </div>
         <div onClick={()=>setOpen(!open)} 
         className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden">
@@ -38,9 +39,9 @@ const NavbarComponents = () => {
           {
             Links.map((link)=>
             <li key={link.name} className="md:ml-8 md:my-0 my-7 font-sora font-bold relative">
-              <a href={link.link}>
+              <Link to={link.link}>
                 <span className="link link-underline link-underline-black">{link.name}</span>
-              </a>
+              </Link>
             </li>)
           }
           <NavbarBtn>Book Now</NavbarBtn>
