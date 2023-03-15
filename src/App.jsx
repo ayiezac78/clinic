@@ -7,12 +7,13 @@ import Results from './pages/Results';
 import Aboutus from './pages/Aboutus';
 import Faq from './pages/Faq';
 import Booking from './pages/Booking';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <BrowserRouter>
-      <NavbarComponents/>
       <div className='w-full h-screen'>
+      <NavbarComponents/>
         <Routes>
           <Route path='/' element={<Homepage/>}/>
           <Route path='/services' element={<Services/>}/>
@@ -22,6 +23,7 @@ function App() {
           <Route path='/booking' element={<Booking/>}/>
           <Route path='*' element={<h1>404 not found</h1>}/>
         </Routes>
+      <Footer/>
       </div>
     </BrowserRouter>
   )
