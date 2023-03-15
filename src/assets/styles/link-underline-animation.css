@@ -17,11 +17,11 @@
 }
 
 .navbar{
-  background-color: #164B2F;
+  background: #164B2F;
   color: #ECFEF2;
 }
 
 .navbar.active{
-  background-color: #ECFEF2;
+  background: #ECFEF2;
   color:#164B2F;
 }
