@@ -5,7 +5,7 @@ const Section3 = () => {
       <Container>
         <Col className='flex justify-center flex-col items-center p-10 lg:py-20 md:py-[90px]'>
           <h1 className='text-5xl font-extrabold mb-3 text-[#ECFEF2]'>SERVICES</h1>
-          <Row className='lg:p-5 md:p-5 text-[#ECFEF2] lg:text-3xl md:text-2xl sm:text-[19px] font-bold'>
+          <Row className='lg:p-2 md:p-2 text-[#ECFEF2] lg:text-3xl md:text-2xl sm:text-[19px] font-bold'>
             <Col>
               <span>Hematology</span><br />
               <span>Serology</span><br />

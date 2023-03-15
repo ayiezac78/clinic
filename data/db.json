@@ -1,0 +1,32 @@
+{
+  "patients": [
+    {
+      "patientData": {
+        "date": "2023-03-16",
+        "firstName": "Ariel",
+        "lastName": "Maniago",
+        "age": "28",
+        "gender": "Male",
+        "address": "SITIO UNDOL, BRGY. CAMUGAO, KABANKALAN CITY, NEGROS OCCIDENTAL",
+        "emailAddress": "admaniago01@gmail.com",
+        "contactNumber": "09659051766",
+        "medicalConcern": "fever"
+      },
+      "id": 1
+    },
+    {
+      "patientData": {
+        "date": "2023-03-31",
+        "firstName": "Irene",
+        "lastName": "Tabuada",
+        "age": "28",
+        "gender": "Female",
+        "address": "Purok 1, Brgy. Alim, Hinoba-an, Negros Occidental",
+        "emailAddress": "irenetabuada@gmail.com",
+        "contactNumber": "09659051766",
+        "medicalConcern": "fever"
+      },
+      "id": 2
+    }
+  ]
+}
