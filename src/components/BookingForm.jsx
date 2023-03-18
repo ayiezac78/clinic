@@ -23,11 +23,11 @@ const BookingForm = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleInput = (e) =>{
-    const { id, value } = e.target;
-    setPatientData((pData) => ({
-      ...pData,
-      [id]: value,
-    }));
+    setPatientData({
+      ...patientData,
+      [e.target.name] : e.target.value
+    });
+    console.log(patientData);
   }
 
   function handleSubmit(e){
@@ -128,7 +128,7 @@ const BookingForm = () => {
                 />
               </Col>
               <Col className="w-full mb-6">
-                <select value={patientData.gender} id="gender" onChange={handleInput} className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select name="gender" id="gender" onChange={handleInput} className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option className="text-gray-600">Gender</option>
                   <option>Male</option>
                   <option>Female</option>
@@ -179,7 +179,7 @@ const BookingForm = () => {
             </Row>
             <Row className="mt-3">
               <Col>
-                <button className="w-full bg-[#164B2F] p-2 rounded-full text-[#ECFEF2] hover:opacity-90">Sumbit</button>
+                <button className="w-full bg-[#164B2F] p-2 rounded-full text-[#ECFEF2] hover:opacity-90">Set Appointment</button>
               </Col>
             </Row>
           </form>

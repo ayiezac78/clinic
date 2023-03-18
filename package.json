@@ -21,14 +21,15 @@
     "flowbite": "^1.6.4",
     "flowbite-datepicker": "^1.2.2",
     "flowbite-react": "^0.4.2",
-    "json-server": "^0.17.2",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
     "react-datepicker": "^4.10.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
     "react-toastify": "^9.1.1",
     "reactstrap": "^9.1.6",
+    "rsuite": "^5.28.3",
     "tailwind-datepicker-react": "^1.2.3"
   },
   "devDependencies": {
@@ -36,6 +37,8 @@
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.14",
+    "json-server": "^0.17.2",
+    "json-server-auth": "^2.1.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7",
     "vite": "^4.1.0"
