@@ -1,4 +1,3 @@
-import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavbarComponents from './components/NavbarComponents'
 import Homepage from './pages/Homepage'
@@ -8,6 +7,9 @@ import Aboutus from './pages/Aboutus';
 import Faq from './pages/Faq';
 import Booking from './pages/Booking';
 import Footer from './components/Footer';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './components/AdminDashboard';
+import ViewPatientData from './components/ViewPatientData';
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
           <Route path='/aboutus' element={<Aboutus/>}/>
           <Route path='/faq' element={<Faq/>}/>
           <Route path='/booking' element={<Booking/>}/>
+          <Route path='/admin' element={<AdminLogin/>}/>
+          <Route path='/admindashboard' element={<AdminDashboard/>}/>
+          <Route path='/viewpatient/:id' element={<ViewPatientData/>}/>
           <Route path='*' element={<h1>404 not found</h1>}/>
         </Routes>
       <Footer/>

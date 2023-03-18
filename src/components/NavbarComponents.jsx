@@ -44,7 +44,7 @@ const NavbarComponents = () => {
               </Link>
             </li>)
           }
-          <NavbarBtn>Book Now</NavbarBtn>
+          <NavbarBtn>Set Appointment</NavbarBtn>
         </ul>
       </div>
     </div>
