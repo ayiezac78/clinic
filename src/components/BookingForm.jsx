@@ -87,7 +87,7 @@ const BookingForm = () => {
               </Col>
               <Col>
                 <div className="mb-3">
-                <input onChange={handleInput} type="date" name="date" id="date" className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+                <input onChange={handleInput} type="date" name="date" id="date" className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
                 </div>
               </Col>
             </Row>
@@ -128,7 +128,7 @@ const BookingForm = () => {
                 />
               </Col>
               <Col className="w-full mb-6">
-                <select name="gender" id="gender" onChange={handleInput} className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select name="gender" id="gender" onChange={handleInput} className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                   <option className="text-gray-600">Gender</option>
                   <option>Male</option>
                   <option>Female</option>
@@ -174,7 +174,7 @@ const BookingForm = () => {
             </Row>
             <Row>
               <Col>
-                <textarea onChange={handleInput} name="medicalConcern" id="medicalConcern" rows="4" className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none" placeholder="What is your medical concern?"></textarea>
+                <textarea onChange={handleInput} name="medicalConcern" id="medicalConcern" rows="4" className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none" placeholder="What is your medical concern?" required></textarea>
               </Col>
             </Row>
             <Row className="mt-3">

@@ -2,171 +2,41 @@
   "patients": [
     {
       "patientData": {
-        "date": "2023-03-17",
+        "date": "2023-03-13",
         "firstName": "Ariel",
         "lastName": "Maniago",
-        "age": "28",
+        "age": "29",
         "gender": "Male",
-        "address": "SITIO UNDOL, BRGY. CAMUGAO, KABANKALAN CITY, NEGROS OCCIDENTAL",
+        "address": "Sitio Undol, Brgy. Camugao, Kabankalan City, Negros Occidental",
         "emailAddress": "admaniago01@gmail.com",
         "contactNumber": "09659051766",
-        "medicalConcern": "asdasd"
+        "medicalConcern": "fever"
+      },
+      "payment": {
+        "paid": true,
+        "amount": "1000",
+        "options": "credit_card"
       },
       "id": 1
     },
     {
       "patientData": {
-        "date": "2023-03-18",
-        "firstName": "Argie",
-        "lastName": "Maniago",
-        "age": "23",
-        "gender": "Male",
-        "address": "Sitio Bajay, Brgy. 3 Poblacion",
-        "emailAddress": "admaniago01@gmail.com",
-        "contactNumber": "091234567890",
-        "medicalConcern": "fever, headache"
-      },
-      "id": 2
-    },
-    {
-      "patientData": {
-        "date": "2023-03-22",
-        "firstName": "Chito",
-        "lastName": "Salibio",
-        "age": "50",
-        "gender": "Male",
-        "address": "Sitio Undol, Brgy. Camugao, Kabankalan City, Negros Occidental",
-        "emailAddress": "admaniago01@gmail.com",
-        "contactNumber": "09455500777",
-        "medicalConcern": "Highblood"
-      },
-      "id": 3
-    },
-    {
-      "patientData": {
-        "date": "2023-03-21",
-        "firstName": "Ma. Luz",
-        "lastName": "Salibio",
-        "age": "51",
-        "gender": "Female",
-        "address": "Sitio Undol, Brgy. Camugao, Kabankalan City, Negros Occidental",
-        "emailAddress": "gamaysalibio@gmail.com",
-        "contactNumber": "09455500777",
-        "medicalConcern": "highblood, uric acid"
-      },
-      "id": 4
-    },
-    {
-      "patientData": {
-        "date": "2023-03-20",
+        "date": "2023-03-23",
         "firstName": "Irene",
         "lastName": "Tabuada",
         "age": "29",
         "gender": "Female",
-        "address": "Purok 1, Brgy. Alim, Hinoba-an, Negros Occidental",
+        "address": "Purok 1, Alim, Hinoba-an, Negros Occidental",
         "emailAddress": "tabuadairene34@gmail.com",
-        "contactNumber": "091234567890",
-        "medicalConcern": "Nagsungon"
+        "contactNumber": "09761331704",
+        "medicalConcern": "headache"
       },
-      "id": 5
-    },
-    {
-      "patientData": {
-        "date": "2023-03-19",
-        "firstName": "William",
-        "lastName": "Pinque",
-        "age": "47",
-        "gender": "Male",
-        "address": "Iligan City",
-        "emailAddress": "william@gmail.com",
-        "contactNumber": "091234567890",
-        "medicalConcern": "asdasdsadasd"
+      "payment": {
+        "paid": true,
+        "amount": "100",
+        "options": "cash"
       },
-      "id": 6
-    },
-    {
-      "patientData": {
-        "date": "2023-03-19",
-        "firstName": "John",
-        "lastName": "Doe",
-        "age": "29",
-        "gender": "Male",
-        "address": "America",
-        "emailAddress": "john@gmail.com",
-        "contactNumber": "091234567890",
-        "medicalConcern": "asdasd"
-      },
-      "id": 7
-    },
-    {
-      "patientData": {
-        "date": "2023-03-24",
-        "firstName": "Juan",
-        "lastName": "Dela Cruz",
-        "age": "30",
-        "gender": "Male",
-        "address": "Manila City",
-        "emailAddress": "jd@yahoo.com",
-        "contactNumber": "091234567890",
-        "medicalConcern": "sakit sa puso"
-      },
-      "id": 8
-    },
-    {
-      "patientData": {
-        "date": "2023-03-20",
-        "firstName": "Pedro",
-        "lastName": "Cruz",
-        "age": "56",
-        "gender": "Male",
-        "address": "Cavite City",
-        "emailAddress": "pedro@gmail.com",
-        "contactNumber": "091234567890",
-        "medicalConcern": "assdasda"
-      },
-      "id": 9
-    },
-    {
-      "patientData": {
-        "date": "2023-03-21",
-        "firstName": "Juana",
-        "lastName": "Change",
-        "age": "45",
-        "gender": "Female",
-        "address": "Cebu City",
-        "emailAddress": "juanachange@gmail.com",
-        "contactNumber": "091234567890",
-        "medicalConcern": "i want to change the system of philippines"
-      },
-      "id": 10
-    },
-    {
-      "patientData": {
-        "date": "",
-        "firstName": "Pedrosa",
-        "lastName": "Delotina",
-        "age": "50",
-        "gender": "Female",
-        "address": "Bacolod City",
-        "emailAddress": "pedrosa@gmail.com",
-        "contactNumber": "",
-        "medicalConcern": "asdasdsad"
-      },
-      "id": 11
-    },
-    {
-      "patientData": {
-        "date": "2023-03-22",
-        "firstName": "Bibi",
-        "lastName": "Ama",
-        "age": "12",
-        "gender": "Male",
-        "address": "SITIO UNDOL, BRGY. CAMUGAO, KABANKALAN CITY, NEGROS OCCIDENTAL",
-        "emailAddress": "bibi@gmail.com",
-        "contactNumber": "09659051766",
-        "medicalConcern": "baby armalight"
-      },
-      "id": 12
+      "id": 2
     }
   ]
 }
