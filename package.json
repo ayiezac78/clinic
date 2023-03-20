@@ -32,7 +32,8 @@
     "reactstrap": "^9.1.6",
     "rsuite": "^5.28.3",
     "stickybits": "^3.7.11",
-    "tailwind-datepicker-react": "^1.2.3"
+    "tailwind-datepicker-react": "^1.2.3",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

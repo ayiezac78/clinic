@@ -7,7 +7,7 @@ const NavbarComponents = () => {
   let Links =[
     {name:"HOME",link:"/"},
     {name:"SERVICES",link:"/services"},
-    {name:"RESULTS",link:"/results"},
+    {name:"BLOGS",link:"/blogs"},
     {name:"ABOUT US",link:"/aboutus"},
     {name:"FAQ",link:"/faq"},
   ];
@@ -31,7 +31,7 @@ const NavbarComponents = () => {
         <div className="font-bold text-2xl flex items-center font-sora mr-1 pt-2">
           <Link to='/'>cLinic.</Link>
         </div>
-        <div onClick={()=>setOpen(!open)} 
+        <div onClick={()=>setOpen(!open)}
         className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden">
           <ion-icon name={open ? 'close' : 'menu-outline'}></ion-icon>
         </div>

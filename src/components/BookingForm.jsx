@@ -5,6 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../assets/styles/arrow-appearance.css'
+
+const generatedRandomId = () =>{
+  const id = Math.floor(Math.random() * 10000);
+  return id;
+}
 
 
 const BookingForm = () => {
@@ -17,7 +23,8 @@ const BookingForm = () => {
     address:'',
     emailAddress:'',
     contactNumber:'',
-    medicalConcern:''
+    medicalConcern:'',
+    ids: generatedRandomId()
   })
 
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -41,15 +48,15 @@ const BookingForm = () => {
   }
 
   const notify = () =>{
-    toast.success('Successfully Submitted!, See you!', {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
+    toast.success(`Successfully Submitted! Your appointment ID is ${patientData.ids}., See you!`, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
       });
   }
 
@@ -67,7 +74,8 @@ const BookingForm = () => {
         address:'',
         emailAddress:'',
         contactNumber:'',
-        medicalConcern:''
+        medicalConcern:'',
+        ids:generatedRandomId()
       });
       setFormSubmitted(false);
       notify();
@@ -98,6 +106,7 @@ const BookingForm = () => {
                   type="text"
                   name="firstName"
                   id="firstName"
+                  autoComplete="off"
                   className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="First Name"
                   required
@@ -109,6 +118,7 @@ const BookingForm = () => {
                   type="text"
                   name="lastName"
                   id="lastName"
+                  autoComplete="off"
                   className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Last Name "
                   required
@@ -122,6 +132,7 @@ const BookingForm = () => {
                 type="number"
                 name="age"
                 id="age"
+                autoComplete="off"
                 className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Age"
                 required
@@ -140,6 +151,7 @@ const BookingForm = () => {
                 <input
                   onChange={handleInput}
                   type="tel"
+                  autoComplete="off"
                   name="contactNumber"
                   id="contactNumber"
                   className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -152,6 +164,7 @@ const BookingForm = () => {
                 onChange={handleInput}
                 type="email"
                 name="emailAddress"
+                autoComplete="off"
                 id="emailAddress"
                 className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Email Address "
@@ -165,9 +178,10 @@ const BookingForm = () => {
                   onChange={handleInput}
                   type="text"
                   name="address"
+                  autoComplete="off"
                   id="address"
                   className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Address"
+                  placeholder="Complete Address"
                   required
                 />
               </Col>

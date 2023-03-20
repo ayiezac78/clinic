@@ -2,41 +2,82 @@
   "patients": [
     {
       "patientData": {
-        "date": "2023-03-13",
+        "date": "2023-03-21",
         "firstName": "Ariel",
         "lastName": "Maniago",
-        "age": "29",
+        "age": "28",
         "gender": "Male",
-        "address": "Sitio Undol, Brgy. Camugao, Kabankalan City, Negros Occidental",
+        "address": "Sitio Undol",
         "emailAddress": "admaniago01@gmail.com",
         "contactNumber": "09659051766",
-        "medicalConcern": "fever"
+        "medicalConcern": "headache",
+        "ids": 1216,
+        "reason": "headachea"
       },
       "payment": {
         "paid": true,
         "amount": "1000",
         "options": "credit_card"
       },
-      "id": 1
+      "id": 4
     },
     {
       "patientData": {
-        "date": "2023-03-23",
-        "firstName": "Irene",
-        "lastName": "Tabuada",
-        "age": "29",
-        "gender": "Female",
-        "address": "Purok 1, Alim, Hinoba-an, Negros Occidental",
-        "emailAddress": "tabuadairene34@gmail.com",
-        "contactNumber": "09761331704",
-        "medicalConcern": "headache"
+        "date": "2023-03-21",
+        "firstName": "William",
+        "lastName": "Pinque",
+        "age": "17",
+        "gender": "Male",
+        "address": "Iligan City",
+        "emailAddress": "william@gmail.com",
+        "contactNumber": "091234567890",
+        "medicalConcern": "headache",
+        "ids": 3867,
+        "reason": "headach"
       },
       "payment": {
         "paid": true,
         "amount": "100",
         "options": "cash"
       },
-      "id": 2
+      "prescribedMedicine": "paracetamol",
+      "id": 6
+    },
+    {
+      "patientData": {
+        "date": "2023-03-21",
+        "firstName": "Argie",
+        "lastName": "Maniago",
+        "age": "23",
+        "gender": "Male",
+        "address": "Sitio Bajay, Brgy. 3 Poblacion, Himamaylan City, Negros Occidental",
+        "emailAddress": "argie@gmail.com",
+        "contactNumber": "091234567890",
+        "medicalConcern": "cough and fever",
+        "ids": 9770
+      },
+      "id": 7
+    },
+    {
+      "patientData": {
+        "date": "2023-03-21",
+        "firstName": "Ariel",
+        "lastName": "Maniago",
+        "age": "28",
+        "gender": "Male",
+        "address": "Sitio Undol, Brgy. Camugao, Kabankalan City, Negros Occidental",
+        "emailAddress": "admaniago01@gmail.com",
+        "contactNumber": "09659051766",
+        "medicalConcern": "cough and colds",
+        "ids": 3060
+      },
+      "payment": {
+        "paid": true,
+        "amount": "100",
+        "options": "cash"
+      },
+      "prescribedMedicine": "",
+      "id": 8
     }
   ]
 }
