@@ -1,12 +1,10 @@
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 import { Container } from 'reactstrap';
-import { HiTrash, HiEye, HiXMark } from "react-icons/hi2";
+import { HiEye, HiXMark } from "react-icons/hi2";
 import { Link } from 'react-router-dom';
 import RefreshBtn from './RefreshBtn';
 import DeleteButton from './DeleteButton';
-
-
 
 const PatientsData = () => {
   const [pData, setPData] = useState([]);
@@ -24,10 +22,12 @@ const PatientsData = () => {
       .catch(err => console.log(err));
   }, []);
 
+  // filtering search when typing
   useEffect(() => {
     const filteredResults = pData.filter((patient) => {
       const fullName = `${patient.patientData.firstName} ${patient.patientData.lastName}`.toLowerCase();
-      return fullName.includes(search.toLowerCase());
+      const appointmentId = `${patient.patientData.ids}`.toLowerCase();
+      return fullName.includes(search.toLowerCase()) || appointmentId.includes(search.toLowerCase());
     });
     setFilteredData(filteredResults);
   }, [pData, search]);
@@ -48,10 +48,10 @@ const PatientsData = () => {
       <div className="mb-4">
         <input
           type="text"
-          placeholder="Search by name"
+          placeholder="Search by name or appointment id"
           onChange={handleSearch}
           value={search}
-          className="px-4 py-2 border border-gray-400 rounded-md w-50 mr-5"
+          className="px-4 py-2 border border-gray-400 rounded-md w-50 mr-5 text-xs"
         />
         {search && (
           <button onClick={clearSearch} className='relative right-12 top-1'>
@@ -64,7 +64,7 @@ const PatientsData = () => {
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead>
             <tr className='text-center text-xs text-[#164B2F] uppercase bg-[#81B795] dark:bg-[#81B795] dark:text-[#164B2F]'>
-              <th scope="col" className="px-6 py-3">ID</th>
+              <th scope="col" className="px-6 py-3">Appointment ID</th>
               <th scope="col" className="px-6 py-3">Appointment Date</th>
               <th scope="col" className="px-6 py-3">First Name</th>
               <th scope="col" className="px-6 py-3">Last Name</th>
@@ -74,18 +74,19 @@ const PatientsData = () => {
               <th scope="col" className="px-6 py-3">Contact Number</th>
               <th scope="col" className="px-6 py-3">Address</th>
               <th scope="col" className="px-6 py-3"> Medical Concern</th>
+              <th scope="col" className="px-6 py-3">Paid</th>
               <th scope="col" className="px-6 py-3">Actions</th>
             </tr>
           </thead>
           {filteredData.length > 0 ? (
-                <tbody className='h-[250px] overflow-scroll text-center'>
+                <tbody className='overflow-scroll text-center'>
                   {
                     filteredData.map((patient, _index) => (
                         <tr
                           key={_index}
                           className="bg-[#D2E4D6] border-b dark:bg-gray-900 dark:border-gray-700"
                         >
-                          <td className="px-6 py-4">{patient.id}</td>
+                          <td className="px-6 py-4">{patient.patientData.ids}</td>
                           <td className="px-6 py-4">{patient.patientData.date}</td>
                           <td className="px-6 py-4">{patient.patientData.firstName}</td>
                           <td className="px-6 py-4">{patient.patientData.lastName}</td>
@@ -95,7 +96,8 @@ const PatientsData = () => {
                           <td className="px-6 py-4">{patient.patientData.contactNumber}</td>
                           <td className="px-6 py-4">{patient.patientData.address}</td>
                           <td className="px-6 py-4">{patient.patientData.medicalConcern}</td>
-                          <td className="flex justify-center items-center py-5 mt-5">
+                          <td className="px-6 py-4">{patient.payment ? (patient.payment.paid ? 'Yes' : 'No') : 'N/A'}</td>
+                          <td className="px-6 py-4 flex items-center">
                             <Link
                               to={`/viewpatient/${patient.id}`}
                               className="font-medium mr-5 text-blue-600 dark:text-blue-500 hover:underline"

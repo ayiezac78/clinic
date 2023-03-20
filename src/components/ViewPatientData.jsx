@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Container, Col, Row } from 'reactstrap';
-import { HiArrowLongLeft, HiPencilSquare } from 'react-icons/hi2';
+import { HiArrowLongLeft, HiPencilSquare, HiXMark } from 'react-icons/hi2';
 import axios from 'axios';
+import '../assets/styles/arrow-appearance.css'
 
 const ViewPatientData = () => {
   const { id } = useParams();
@@ -14,9 +15,11 @@ const ViewPatientData = () => {
   const [payment, setPayment] = useState({
     paid: false,
     amount: 0,
-    options: []
+    options: ''
   })
-  
+  const [prescribedMedicine, setPrescribedMedicine] = useState('');
+
+
   const paymentOptions = [
     { label: "Credit Card", value: "credit_card" },
     { label: "Debit Card", value: "debit_card" },
@@ -40,22 +43,21 @@ const ViewPatientData = () => {
     fetchData();
   }, [id]);
 
-  const toggleEditMode = () => {
-    setEditMode(!editMode);
-    setUnsavedChanges(false);
-  };
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === 'paymentOption') {
       const option = paymentOptions.find(opt => opt.value === value);
       setPayment({
         ...payment,
-        options: [option],
+        options: option.value,
         paid: true,
         amount: 100
       });
-    } else {
+    
+    }else if(name === 'prescribedMedicine') {
+      setPrescribedMedicine(value);
+      setUnsavedChanges(true);
+    }else {
       setPatientData({
         ...patientData,
         [name]: value
@@ -70,15 +72,21 @@ const ViewPatientData = () => {
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`http://localhost:8000/patients/${id}`, { patientData, payment });
+      const res = await axios.put(`http://localhost:8000/patients/${id}`, { patientData, payment, prescribedMedicine });
       setPatientInfo(prevState => ({ ...prevState, patientData, payment }));
       setPatientData(patientData);
       setPayment(payment);
+      setPrescribedMedicine("");
       setEditMode(false);
       setUnsavedChanges(false);
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const toggleEditMode = () => {
+    setEditMode(!editMode);
+    setUnsavedChanges(false);
   };
 
   const handleCancel = () => {
@@ -104,21 +112,30 @@ const ViewPatientData = () => {
     <section className="py-20 mt-[85px] bg-[#EDFDF2] font-sora">
       <Container className="grid place-items-center">
         {patientInfo && (
-          <div className="bg-white shadow rounded-lg p-6 w-96">
+          <div className="bg-white shadow rounded-lg p-6 w-96 mb-[85px]">
             <div className="flex justify-between items-center mb-4">
               <button onClick={backHistory} className="flex items-center text-gray-500">
                 <HiArrowLongLeft className="h-5 w-5 text-gray-500 mr-1" />
                 <span>Back</span>
               </button>
-              <button onClick={toggleEditMode} className="flex items-center">
-                <HiPencilSquare className="h-5 w-5 text-gray-500 mr-1" />
-                <span className="text-gray-500">Edit</span>
+              <button onClick={editMode ? handleCancel : toggleEditMode} className="flex items-center">
+                {editMode ? (
+                  <>
+                    <HiXMark className="h-5 w-5 text-red-500 mr-1" />
+                    <span className="text-red-500">Cancel</span>
+                  </>
+                ) : (
+                  <>
+                    <HiPencilSquare className="h-5 w-5 text-gray-500 mr-1" />
+                    <span className="text-gray-500">Edit</span>
+                  </>
+                )}
               </button>
             </div>
             <h2 className="text-lg font-bold mb-3">Appointment Information</h2>
             {editMode ? (
               <>
-                <form onSubmit={handleSave}>
+                <form>
                     <div className="mb-4">
                       <label htmlFor="date" className="block font-bold mb-2">
                         Date of Appointment:
@@ -186,12 +203,12 @@ const ViewPatientData = () => {
                           Contact Number:
                           </label>
                           <input
-                            type="tel"
+                            type="number"
                             id="contactNumber"
                             name="contactNumber"
                             value={patientData.contactNumber}
                             onChange={handleInputChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline arrow-appearance"
                           />
                         </div>
                         <div className="mb-4">
@@ -229,7 +246,7 @@ const ViewPatientData = () => {
                             name="reason"
                             value={patientData.medicalConcern}
                             onChange={handleInputChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-none"
                           />
                         </div>
                         <div className="mb-4">
@@ -284,19 +301,26 @@ const ViewPatientData = () => {
                             ))}
                           </select>
                         </div>
+                        <div className="mb-4">
+                        <label htmlFor="prescribedMedicine">Prescribed Medicine:</label>
+                          <textarea type="text" id="prescribedMedicine" name="prescribedMedicine" value={prescribedMedicine} onChange={(e) => setPrescribedMedicine(e.target.value)} />
+                        </div>
                         <div className="flex justify-between">
-                        <button onClick={handleCancel} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-blue-400">
-                          Cancel
-                        </button>
-                        <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400">
-                        Save Changes
-                        </button>
+                          <button onClick={handleCancel} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-blue-400">
+                            Cancel
+                          </button>
+                          <button onClick={handleSave} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-400">
+                          Save Changes
+                          </button>
                         </div>
                 </form>
               </>
-              
               ) : (
                 <>
+                  <div className="mb-4">
+                    <p className="font-bold">Appointment ID:</p>
+                    <p>{patientData.ids}</p>
+                  </div>
                   <div className="mb-4">
                     <p className="font-bold">Date of Appointment:</p>
                     <p>{patientData.date}</p>
@@ -334,7 +358,7 @@ const ViewPatientData = () => {
                     <p>{patientData.medicalConcern}</p>
                   </div>
                   <div className="mb-4">
-                    <strong>Paid:</strong> {payment.paid ? "Yes" : "No"}
+                    <strong>Paid:</strong> {payment ? (payment.paid ? "Yes" : "No") : "N/A"}
                   </div>
                   <div className="mb-4">
                     <strong>Amount Paid:</strong> {payment.amount}
@@ -344,9 +368,10 @@ const ViewPatientData = () => {
                     {paymentOptions.find(option => option.value === payment.options)?.label}
                   </div>
                 </>
-              )}
-              </div>
-              )}
+              )
+            }
+            </div>)
+        }
       </Container>
     </section>
 
