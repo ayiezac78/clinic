@@ -87,7 +87,7 @@ const PatientsData = () => {
                           className="bg-[#D2E4D6] border-b dark:bg-gray-900 dark:border-gray-700"
                         >
                           <td className="px-6 py-4">{patient.patientData.ids}</td>
-                          <td className="px-6 py-4">{patient.patientData.date}</td>
+                          <td className="px-6 py-4">{patient.patientData.date} {patient.patientData.period}</td>
                           <td className="px-6 py-4">{patient.patientData.firstName}</td>
                           <td className="px-6 py-4">{patient.patientData.lastName}</td>
                           <td className="px-6 py-4">{patient.patientData.age}</td>

@@ -26,7 +26,7 @@ const NavbarComponents = () => {
   window.addEventListener('scroll', changeBackground);
 
   return (
-    <div className={`shadow w-full ${navbar ? 'navbar active':'navbar'} fixed top-0 left-0`}>
+    <nav className={`shadow w-full ${navbar ? 'navbar active':'navbar'} fixed top-0 left-0 z-10`}>
       <div className="md:flex items-center justify-between py-4 md:px-10 px-7">
         <div className="font-bold text-2xl flex items-center font-sora mr-1 pt-2">
           <Link to='/'>cLinic.</Link>
@@ -47,7 +47,7 @@ const NavbarComponents = () => {
           <NavbarBtn>Set Appointment</NavbarBtn>
         </ul>
       </div>
-    </div>
+    </nav>
   );
 };
 

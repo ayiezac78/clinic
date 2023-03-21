@@ -4,6 +4,7 @@ import { Container, Col, Row } from 'reactstrap';
 import { HiArrowLongLeft, HiPencilSquare, HiXMark } from 'react-icons/hi2';
 import axios from 'axios';
 import '../assets/styles/arrow-appearance.css'
+import patientimg from '../assets/images/undraw_personal_information_re_vw8a.svg'
 
 const ViewPatientData = () => {
   const { id } = useParams();
@@ -19,7 +20,7 @@ const ViewPatientData = () => {
   })
   const [prescribedMedicine, setPrescribedMedicine] = useState('');
 
-
+  
   const paymentOptions = [
     { label: "Credit Card", value: "credit_card" },
     { label: "Debit Card", value: "debit_card" },
@@ -53,7 +54,6 @@ const ViewPatientData = () => {
         paid: true,
         amount: 100
       });
-    
     }else if(name === 'prescribedMedicine') {
       setPrescribedMedicine(value);
       setUnsavedChanges(true);
@@ -73,10 +73,10 @@ const ViewPatientData = () => {
     e.preventDefault();
     try {
       const res = await axios.put(`http://localhost:8000/patients/${id}`, { patientData, payment, prescribedMedicine });
-      setPatientInfo(prevState => ({ ...prevState, patientData, payment }));
+      setPatientInfo(prevState => ({ ...prevState, patientData, payment, prescribedMedicine }));
       setPatientData(patientData);
       setPayment(payment);
-      setPrescribedMedicine("");
+      // setPrescribedMedicine("");
       setEditMode(false);
       setUnsavedChanges(false);
     } catch (error) {
@@ -110,32 +110,34 @@ const ViewPatientData = () => {
 
   return (
     <section className="py-20 mt-[85px] bg-[#EDFDF2] font-sora">
-      <Container className="grid place-items-center">
-        {patientInfo && (
-          <div className="bg-white shadow rounded-lg p-6 w-96 mb-[85px]">
-            <div className="flex justify-between items-center mb-4">
-              <button onClick={backHistory} className="flex items-center text-gray-500">
-                <HiArrowLongLeft className="h-5 w-5 text-gray-500 mr-1" />
-                <span>Back</span>
-              </button>
-              <button onClick={editMode ? handleCancel : toggleEditMode} className="flex items-center">
+      <Container className="grid place-items-center px-24 sm:p-1">
+        <Row>
+          <Col>
+            {patientInfo && (
+              <div className="bg-[#D2E4D6] text-[#164B2F] shadow rounded-lg p-6 w-96 mb-[85px]">
+                <div className="flex justify-between items-center mb-4">
+                  <button onClick={backHistory} className="flex items-center text-gray-500">
+                    <HiArrowLongLeft className="h-5 w-5 text-gray-500 mr-1" />
+                    <span>Back</span>
+                  </button>
+                  <button onClick={editMode ? handleCancel : toggleEditMode} className="flex items-center">
+                    {editMode ? (
+                      <>
+                        <HiXMark className="h-5 w-5 text-red-500 mr-1" />
+                        <span className="text-red-500">Cancel</span>
+                      </>
+                    ) : (
+                      <>
+                        <HiPencilSquare className="h-5 w-5 text-gray-500 mr-1" />
+                        <span className="text-gray-500">Edit</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+                <h2 className="text-lg font-bold mb-3">Appointment Information</h2>
                 {editMode ? (
-                  <>
-                    <HiXMark className="h-5 w-5 text-red-500 mr-1" />
-                    <span className="text-red-500">Cancel</span>
-                  </>
-                ) : (
-                  <>
-                    <HiPencilSquare className="h-5 w-5 text-gray-500 mr-1" />
-                    <span className="text-gray-500">Edit</span>
-                  </>
-                )}
-              </button>
-            </div>
-            <h2 className="text-lg font-bold mb-3">Appointment Information</h2>
-            {editMode ? (
-              <>
-                <form>
+                  <div>
+                    <form>
                     <div className="mb-4">
                       <label htmlFor="date" className="block font-bold mb-2">
                         Date of Appointment:
@@ -303,7 +305,7 @@ const ViewPatientData = () => {
                         </div>
                         <div className="mb-4">
                         <label htmlFor="prescribedMedicine">Prescribed Medicine:</label>
-                          <textarea type="text" id="prescribedMedicine" name="prescribedMedicine" value={prescribedMedicine} onChange={(e) => setPrescribedMedicine(e.target.value)} />
+                          <textarea type="text" id="prescribedMedicine" name="prescribedMedicine" value={prescribedMedicine} onChange={handleInputChange} className="w-full resize-none rounded" />
                         </div>
                         <div className="flex justify-between">
                           <button onClick={handleCancel} className="bg-green-500 text-white px-4 py-2 rounded hover:bg-blue-400">
@@ -313,65 +315,74 @@ const ViewPatientData = () => {
                           Save Changes
                           </button>
                         </div>
-                </form>
-              </>
-              ) : (
-                <>
-                  <div className="mb-4">
-                    <p className="font-bold">Appointment ID:</p>
-                    <p>{patientData.ids}</p>
+                    </form>
                   </div>
-                  <div className="mb-4">
-                    <p className="font-bold">Date of Appointment:</p>
-                    <p>{patientData.date}</p>
-                  </div>
-                  <div className="mb-4">
-                    <p className="font-bold">First Name:</p>
-                    <p>{patientData.firstName}</p>
-                  </div>
-                  <div className="mb-4">
-                    <p className="font-bold">Last Name:</p>
-                    <p>{patientData.lastName}</p>
-                  </div>
-                  <div className="mb-4">
-                    <p className="font-bold">Age:</p>
-                    <p>{patientData.age}</p>
-                  </div>
-                  <div className="mb-4">
-                    <p className="font-bold">Gender:</p>
-                    <p>{patientData.gender}</p>
-                  </div>
-                  <div className="mb-4">
-                    <p className="font-bold">Contact Number:</p>
-                    <p>{patientData.contactNumber}</p>
-                  </div>
-                  <div className="mb-4">
-                    <p className="font-bold">Email Address:</p>
-                    <p>{patientData.emailAddress}</p>
-                  </div>
-                  <div className="mb-4">
-                    <p className="font-bold">Address:</p>
-                    <p>{patientData.address}</p>
-                  </div>
-                  <div className="mb-4">
-                    <p className="font-bold">Reason for Appointment:</p>
-                    <p>{patientData.medicalConcern}</p>
-                  </div>
-                  <div className="mb-4">
-                    <strong>Paid:</strong> {payment ? (payment.paid ? "Yes" : "No") : "N/A"}
-                  </div>
-                  <div className="mb-4">
-                    <strong>Amount Paid:</strong> {payment.amount}
-                  </div>
-                  <div className="mb-4">
-                    <strong>Payment Options:</strong>{" "}
-                    {paymentOptions.find(option => option.value === payment.options)?.label}
-                  </div>
-                </>
-              )
+                  ) : (
+                    <>
+                      <div className="mb-4">
+                        <p className="font-bold">Appointment ID:</p>
+                        <p>{patientData.ids}</p>
+                      </div>
+                      <div className="mb-4">
+                        <p className="font-bold">Date of Appointment:</p>
+                        <p>{patientData.date}</p>
+                      </div>
+                      <div className="mb-4">
+                        <p className="font-bold">First Name:</p>
+                        <p>{patientData.firstName}</p>
+                      </div>
+                      <div className="mb-4">
+                        <p className="font-bold">Last Name:</p>
+                        <p>{patientData.lastName}</p>
+                      </div>
+                      <div className="mb-4">
+                        <p className="font-bold">Age:</p>
+                        <p>{patientData.age}</p>
+                      </div>
+                      <div className="mb-4">
+                        <p className="font-bold">Gender:</p>
+                        <p>{patientData.gender}</p>
+                      </div>
+                      <div className="mb-4">
+                        <p className="font-bold">Contact Number:</p>
+                        <p>{patientData.contactNumber}</p>
+                      </div>
+                      <div className="mb-4">
+                        <p className="font-bold">Email Address:</p>
+                        <p>{patientData.emailAddress}</p>
+                      </div>
+                      <div className="mb-4">
+                        <p className="font-bold">Address:</p>
+                        <p>{patientData.address}</p>
+                      </div>
+                      <div className="mb-4">
+                        <p className="font-bold">Reason for Appointment:</p>
+                        <p>{patientData.medicalConcern}</p>
+                      </div>
+                      <div className="mb-4">
+                        <p className="font-bold">Prescribed Medicine:</p>
+                        <p>{prescribedMedicine}</p>
+                      </div>
+                      <div className="mb-4">
+                        <strong>Paid:</strong> {payment ? (payment.paid ? "Yes" : "No") : "N/A"}
+                      </div>
+                      <div className="mb-4">
+                        <strong>Amount Paid:</strong> {payment.amount}
+                      </div>
+                      <div className="mb-4">
+                        <strong>Payment Options:</strong>{" "}
+                        {paymentOptions.find(option => option.value === payment.options)?.label}
+                      </div>
+                    </>
+                  )
+                }
+              </div>)
             }
-            </div>)
-        }
+          </Col>
+          <Col>
+              <img src={patientimg} alt="patient information image" className='sm:hidden md:hidden lg:block'/>
+          </Col>
+        </Row>
       </Container>
     </section>
 
