@@ -1,15 +1,31 @@
 import { Container, Col, Row } from 'reactstrap';
 import howitworks from '../assets/images/2203_w037_n003_239b_p1_239-removebg-preview.png'
+import ScrollReveal from 'scrollreveal';
+import { useEffect } from 'react';
 
 const Section4 = () => {
+  useEffect(() => {
+    ScrollReveal().reveal('.text-left-animate', {
+      delay: 200,
+      distance: '50px',
+      origin: 'bottom'
+    });
+  
+    ScrollReveal().reveal('.img-left', {
+      delay: 200,
+      distance: '50px',
+      origin: 'right'
+    });
+  }, []);
+  
   return (
     <section className="bg-[#00A661] font-sora">
       <Container>
         <Row className="sm:d-flex sm:flex-col md:flex md:flex-row">
           <Col className="lg:p-[100px] md:p-[50px] flex justify-center items-center flex-col sm:pt-8 text-[#ECFEF2]">
-            <h1 className="text-2xl font-bold text-left">HOW IT WORKS</h1>
+            <h1 className="text-2xl font-bold text-left text-left-animate">HOW IT WORKS</h1>
             <div className="sm:p-5 font-bold">
-              <p className="mb-2 sm:text-sm lg:text-sm">
+              <p className="mb-2 sm:text-sm lg:text-sm text-left-animate">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +44,7 @@ const Section4 = () => {
                 </span>
                 <span>CHOOSE APPOINTMENT SCHEDULE.</span>
               </p>
-              <p className="mb-2 sm:text-sm lg:text-sm">
+              <p className="mb-2 sm:text-sm lg:text-sm text-left-animate">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +63,7 @@ const Section4 = () => {
                 </span>
                 <span>FILL UP YOUR DETAILS</span>
               </p>
-              <p className="mb-2 sm:text-sm lg:text-sm">
+              <p className="mb-2 sm:text-sm lg:text-sm text-left-animate">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +82,7 @@ const Section4 = () => {
                 </span>
                 <span>WAIT FOR A CONFIRMATION VIA EMAIL</span> 
               </p>
-              <p className="mb-2 sm:text-sm lg:text-sm">
+              <p className="mb-2 sm:text-sm lg:text-sm text-left-animate">
                 <span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +106,7 @@ const Section4 = () => {
           </Col>
           <Col className="lg:p-0 md:p-0 flex items-center">
             <img
-              className="sm:hidden md:inline-block"
+              className="sm:hidden md:inline-block img-left object-cover object-right-bottom"
               src={howitworks}
               alt="how it works image"
             />

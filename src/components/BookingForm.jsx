@@ -16,6 +16,7 @@ const generatedRandomId = () =>{
 const BookingForm = () => {
   const [patientData, setPatientData] = useState({
     date: '',
+    period: '',
     firstName: '',
     lastName: '',
     age:'',
@@ -67,6 +68,7 @@ const BookingForm = () => {
       formRef.current?.reset();
       setPatientData({
         date: '',
+        period:'',
         firstName: '',
         lastName: '',
         age:'',
@@ -89,14 +91,21 @@ const BookingForm = () => {
       <Row className="flex justify-center items-center">
         <Col className="justify-center flex">
           <form ref={formRef} onSubmit={handleSubmit}>
+            <Col className="mb-3">
+              <label htmlFor="lblbookingdate" className="text-xl font-semibold text-[#164B2F]">Set an Appointment Consultation Now! </label>
+            </Col>
             <Row>
-              <Col>
-                <label htmlFor="lblbookingdate" className="text-sm">Select Appointment Date: </label>
-              </Col>
               <Col>
                 <div className="mb-3">
                 <input onChange={handleInput} type="date" name="date" id="date" className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
                 </div>
+              </Col>
+              <Col>
+                <select name="period" id="period" onChange={handleInput} className="block p-2.5 w-full text-sm bg-gray-100 text-gray-500 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                  <option className="text-gray-600">Choose Time</option>
+                  <option>AM</option>
+                  <option>PM</option>
+                </select>
               </Col>
             </Row>
             <Row>
@@ -199,6 +208,7 @@ const BookingForm = () => {
           </form>
         </Col>
         <Col className="sm:hidden md:block">
+          <p className="mb-4 text-3xl font-semibold text-[#164B2F]">"PREVENTION IS BETTER THAN CURE. - Unknown"</p>
           <img
             src={bookingImg}
             alt="the doctor is consulting the child"
