@@ -28,6 +28,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
+    "react-scroll": "^1.8.9",
     "react-toastify": "^9.1.1",
     "reactstrap": "^9.1.6",
     "rsuite": "^5.28.3",

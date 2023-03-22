@@ -10,7 +10,8 @@ import Footer from './components/Footer';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
 import ViewPatientData from './components/ViewPatientData';
-// import PrivateRoute from './components/PrivateRoute';
+import BackToTopBtn from './components/BackToTopBtn';
+
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path='/viewpatient/:id' element={<ViewPatientData/>}/>
             <Route path='*' element={<h1>404 not found</h1>}/>
           </Routes>
+            <BackToTopBtn/>
         </main>
         <footer>
           <Footer/>
