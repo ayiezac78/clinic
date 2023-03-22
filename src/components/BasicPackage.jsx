@@ -100,8 +100,8 @@ const BasicPackage = () => {
         className="bg-white shadow-lg rounded-lg px-8 pt-10 pb-8 mb-8 sm:mb-0 srpackage"
       >
         <h3 className="text-2xl font-extrabold text-gray-900 mb-4 flex justify-between items-center">
-        <span className="text-normal sm:text-base">{packageItem.package_name}</span>{" "}
-        <span className="text-green-500 font-medium ml-2 text-sm sm:text-base">&#8369; {packageItem.price}</span>
+        <span className="text-sm sm:text-base">{packageItem.package_name}</span>{" "}
+        <span className="text-green-500 font-medium ml-2 text-sm sm:text-base">&#8369;{packageItem.price}</span>
       </h3>
         <ul className="text-lg text-gray-500 mb-6">
           {Object.entries(packageItem).map(([key, value]) => {
@@ -131,16 +131,15 @@ const BasicPackage = () => {
             return null;
           })}
         </ul>
-        <button
-            className="inline-block px-4 py-2 text-lg font-medium leading-5 text-white transition-colors duration-150 bg-green-500 rounded-lg hover:bg-green-600 focus:outline-none focus:shadow-outline-green"
-          >
-            Subscibe{" "}
-            <span className="inline-block ml-1">&rarr;</span>
-          </button>
+        <button>
+          <p>Subscribe</p>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </button>
       </div>
     ))}
     </div>
-  
   );
 };
 
