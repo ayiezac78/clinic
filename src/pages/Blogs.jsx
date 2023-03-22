@@ -18,7 +18,7 @@ const Blogs = () => {
       image: blog1,
     },
     {
-      title: "What are the five (5) tips to eat and stay healthy?",
+      title: "What are the six (6) tips to eat and stay healthy?",
       items: [
         "Eat a variety of food",
         "Cut back on salt",
