@@ -1,0 +1,6 @@
+@media (max-width: 640px) {
+  .container-wide-mobile {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}

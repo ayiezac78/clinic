@@ -1,5 +1,5 @@
 import NavbarBtn from "./NavbarBtn";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import '../assets/styles/link-underline-animation.css'
 import { Link } from "react-router-dom";
 
@@ -13,26 +13,41 @@ const NavbarComponents = () => {
   ];
   const [open, setOpen] = useState(false);
   const [navbar, setNavbar] = useState(false);
+  const [scrollPos, setScrollPos] = useState(0);
 
-  const changeBackground = () =>{
-    // console.log(window.scrollY);
-    if (window.scrollY >= 80) {
-      setNavbar(true)
-    }else{
-      setNavbar(false)
-    }
-  }
 
-  window.addEventListener('scroll', changeBackground);
+  useEffect(() => {
+    const changeBackground = () => {
+      if (window.scrollY >= 80) {
+        setNavbar(true);
+      } else {
+        setNavbar(false);
+      }
+    };
+    window.addEventListener("scroll", changeBackground);
+    return () => {
+      window.removeEventListener("scroll", changeBackground);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPos(window.pageYOffset);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
 
   return (
-    <nav className={`shadow w-full ${navbar ? 'navbar active':'navbar'} fixed top-0 left-0 z-10`}>
+    <nav className={`shadow w-full ${scrollPos && navbar > 0 ? 'navbar active':'navbar'} fixed top-0 left-0 z-10`}>
       <div className="md:flex items-center justify-between py-4 md:px-10 px-7">
         <div className="font-bold text-2xl flex items-center font-sora mr-1 pt-2">
           <Link to='/'>cLinic.</Link>
         </div>
-        <div onClick={()=>setOpen(!open)}
-        className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden">
+        <div onClick={()=>setOpen(!open)} className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden">
           <ion-icon name={open ? 'close' : 'menu-outline'}></ion-icon>
         </div>
         <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static ${navbar ? 'navbar active':'navbar'} md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 ${open ? 'top-[72px] opacity-100':'top-[-490px]'} md:opacity-100 opacity-0`}>

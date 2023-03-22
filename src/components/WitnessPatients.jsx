@@ -12,19 +12,19 @@ const WitnessPatients = () => {
     {
       name: "Juan Dela Cruz",
       image: <img src={juandelacruz} className="w-[200px] h-[200px] rounded-full object-cover text-center m-auto mb-4"/>,
-      description: "They have an effective treatment with right diagnosis to me. The doctor and the staff listened to my story and evaluate my condition from every angle and develop a treatment plan for me.",
+      description: '"They have an effective treatment with right diagnosis to me. The doctor and the staff listened to my story and evaluate my condition from every angle and develop a treatment plan for me."',
       colSpan: "",
     },
     {
       name: "Sarah Dutch",
       image: <img src={saragdutch} className="w-[200px] h-[200px] rounded-full object-cover text-center m-auto mb-4"/>,
-      description: "I have confidence in the cLinic because they have extensive experience in treating patients with your specific condition like me. I am grateful of the cLinic services offered by them.",
+      description: '"I have confidence in the cLinic because they have extensive experience in treating patients with your specific condition like me. I am grateful of the cLinic services offered by them."',
       colSpan: "",
     },
     {
       name: "John Doe",
       image: <img src={johndoe} className="w-[200px] h-[200px] rounded-full object-cover text-center m-auto mb-4"/>,
-      description: "They showed compassion to me with a combined comprehensive evaluations which I believe that makes me heal faster and getting me back on my life.",
+      description: '"They showed compassion to me with a combined comprehensive evaluations which I believe that makes me heal faster and getting me back on my life."',
       colSpan: "md:col-span-2 lg:col-span-1",
     }
   ]
