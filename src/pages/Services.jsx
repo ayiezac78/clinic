@@ -9,9 +9,9 @@ const Services = () => {
         <br className="hidden md:block" />
         we offer <span className="underline text-2xl md:text-4xl">package prices</span> for the following diagnostic tests.
       </p>
-      <div class="p-6 sm:p-10 md:p-16 mt-auto sm:mt-12 md:mt-16 lg:flex lg:justify-center flex-col items-center lg:flex-row">
-        <h2 class="text-3xl font-bold mb-8 text-center text-[#164B2F]">Services & Packages</h2>
-        <div class="lg:flex lg:justify-center">
+      <div className="p-6 sm:p-10 md:p-16 mt-auto sm:mt-12 md:mt-16 lg:flex lg:justify-center flex-col items-center lg:flex-row">
+        <h2 className="text-3xl font-bold mb-8 text-center text-[#164B2F]">Services & Packages</h2>
+        <div className="lg:flex lg:justify-center">
           <BasicPackage/>
         </div>
       </div>

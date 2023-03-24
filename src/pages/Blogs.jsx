@@ -1,5 +1,6 @@
 import blog1 from '../assets/images/blog1.jpg';
 import blog2 from '../assets/images/blog2.jpg';
+import '../assets/styles/blogs.css'
 
 const Blogs = () => {
   const listItems = [
@@ -32,7 +33,7 @@ const Blogs = () => {
   ];
 
   return (
-    <section className="font-sora mb-10 md:mb-10 md:m-2 md:p-2 sm:p-5 sm:mt-16 md:mt-16 text-[#164B2F] animate-fade-in">
+    <section className="font-sora mb-10 md:mb-10 md:m-2 md:p-2 sm:p-5 sm:mt-16 md:mt-16 text-[#164B2F] fade-in">
         <h1 className='md:m-8 md:p-2 sm:p-2 md:mt-16 sm:mt-10 text-3xl font-bold'>Get the best health tips to stay healthy living.</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-8">
         {listItems.map((item, index) => (

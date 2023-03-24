@@ -1,14 +1,13 @@
 import { useEffect } from 'react';
 import ScrollReveal from 'scrollreveal';
 import welcomeImg from '../assets/images/66259-removebg-preview.png';
-import { Container, Row, Col } from 'reactstrap';
 import Phonehero from '../assets/svg-icon/phonehero';
 import Mobileicon from '../assets/svg-icon/mobileicon';
 import Emailicon from '../assets/svg-icon/emailicon';
 
 const WelcomeSection = () => {
   useEffect(() => {
-    ScrollReveal().reveal('.welcome-img, .welcome-content', {
+    ScrollReveal().reveal('.welcome-content', {
       duration: 1000,
       distance: '20px',
       easing: 'cubic-bezier(0.5, 0, 0, 1)',
@@ -18,37 +17,41 @@ const WelcomeSection = () => {
   }, []);
 
   return (
-    <section className="p-5 mt-[85px] bg-[#164B2F]">
-      <Container>
-        <Row className="sm:d-flex sm:flex-col md:flex md:flex-row">
-          <Col>
-            <img className="img-fluid welcome-img animate" src={welcomeImg} alt="welcome image" />
-          </Col>
-          <Col className="lg:p-[100px] md:p-[50px] text-[#ECFEF2] font-sora welcome-content animate">
-            <h1 className="md:text-2xl sm:text-2xl lg:text-3xl font-bold pb-3 sm:pb-2">
-              YOUR HEALTH IS WEALTH.
-            </h1>
-            <h2 className="md:text-xl lg:text-2xl sm:text-xl font-bold pb-3">
-              Get Consult Now!
-            </h2>
-            <div>
-              <p className="sm:text-[16px] md:text-[16px] mb-2">Inquire us via:</p>
-              <div className='lg:flex'>
-                <div className='mr-2'>
-                  <Phonehero/>
-                </div>
-                <div className='mr-2'>
-                  <Mobileicon/>
-                </div>
-                <div></div>
-                <Emailicon/>
-              </div>
-              <div>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </Container>
+    <section className="grid grid-cols-1 lg:grid-cols-2 items-center py-8 lg:py-12 px-4 md:mt-8 sm:mt-8 lg:gap-12 lg:mb-0 font-sora bg-[#164B2F] text-[#ECFEF2] box-border">
+      <div className="mb-8 lg:mb-0 welcome-img">
+        <img src={welcomeImg} alt="Clinic" className="w-full max-w-[100%] h-auto" />
+      </div>
+      <div className="lg:pl-8 welcome-content">
+        <h2 className="text-xl md:text-2xl lg:text-4xl font-bold mb-4">
+          Health is Wealth
+        </h2>
+        <p className="text-sm md:text-base lg:text-lg mb-8">
+          Get a consultation now and take the first step towards a healthier
+          life. We offer consultations via telephone, text messages, and email.
+        </p>
+        <div className="grid sm:grid-cols-1 gap-4">
+          <a
+            href="tel:123456789"
+            className="flex items-center text-base md:text-lg lg:text-xl"
+          >
+            <Phonehero className="mr-2" />
+          </a>
+          <a
+            href="mailto:info@clinic.com"
+            className="flex items-center text-base md:text-lg lg:text-xl"
+          >
+            <Emailicon className="mr-2" />
+          </a>
+          <a
+            href="https://clinic.com/chat"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center text-base md:text-lg lg:text-xl"
+          >
+            <Mobileicon className="mr-2" />
+          </a>
+        </div>
+      </div>
     </section>
   );
 }

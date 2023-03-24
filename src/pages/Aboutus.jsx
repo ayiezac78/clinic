@@ -1,8 +1,16 @@
-import React from 'react'
+import About from "../components/About"
+import AboutMissionVision from "../components/AboutMission"
+import CoreValues from "../components/CoreValues"
+import ScrollReveal from "scrollreveal"
+
 
 const Aboutus = () => {
   return (
-    <div>Aboutus</div>
+    <div>
+      <About/>
+      <AboutMissionVision/>
+      <CoreValues/>
+    </div>
   )
 }
 

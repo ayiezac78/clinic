@@ -7,13 +7,28 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../assets/styles/arrow-appearance.css'
 
-const generatedRandomId = () =>{
-  const id = Math.floor(Math.random() * 10000);
-  return id;
-}
-
+  
 
 const BookingForm = () => {
+
+  const fetchPatients = async () => {
+    // Fetch the list of patients from the JSON API.
+    const response = await fetch('http://localhost:8000/patients');
+    const patients = await response.json();
+    return patients;
+  };
+
+  const generateIncrementalId = async () => {
+    const patients = await fetchPatients();
+    const maxId = patients.reduce((max, patient) => {
+      const id = parseInt(patient.id);
+      return id > max ? id : max;
+    }, 0);
+    const newId = maxId + 1;
+    return newId.toString().padStart(4, '0');
+  };
+
+
   const [patientData, setPatientData] = useState({
     date: '',
     period: '',
@@ -25,7 +40,7 @@ const BookingForm = () => {
     emailAddress:'',
     contactNumber:'',
     medicalConcern:'',
-    ids: generatedRandomId()
+    ids: generateIncrementalId()
   })
 
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -38,18 +53,42 @@ const BookingForm = () => {
     console.log(patientData);
   }
 
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault();
-    axios.post('http://localhost:8000/patients', {patientData})
-    .then(response => {
-      console.log(response);
-      setFormSubmitted(true);
-    })
-    .catch(err => console.log(err));
+    generateIncrementalId().then((id) => {
+      const dateParts = patientData.date.split("-"); // Split the date string into an array of parts
+      const formattedDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`; // Format the date as MM/DD/YYYY
+      const patient = {
+        patientData: {
+          date: formattedDate,
+          period: patientData.period,
+          firstName: patientData.firstName,
+          lastName: patientData.lastName,
+          age: patientData.age,
+          gender: patientData.gender,
+          address: patientData.address,
+          emailAddress: patientData.emailAddress,
+          contactNumber: patientData.contactNumber,
+          medicalConcern: patientData.medicalConcern,
+          ids: id,
+        },
+        id: id,
+      };
+  
+      axios
+        .post("http://localhost:8000/patients", patient)
+        .then((response) => {
+          console.log(response);
+          notify(id);
+          setFormSubmitted(true);
+        })
+        .catch((err) => console.log(err));
+    });
   }
+  
 
-  const notify = () =>{
-    toast.success(`Successfully Submitted! Your appointment ID is ${patientData.ids}., See you!`, {
+  const notify = (ids) =>{
+    toast.success(`Successfully Submitted! Your appointment ID is ${ids}., See you!`, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -77,10 +116,9 @@ const BookingForm = () => {
         emailAddress:'',
         contactNumber:'',
         medicalConcern:'',
-        ids:generatedRandomId()
+        ids:generateIncrementalId()
       });
       setFormSubmitted(false);
-      notify();
     }
   },[formSubmitted])
 

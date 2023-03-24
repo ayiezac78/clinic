@@ -4,7 +4,6 @@ import { Container, Col, Row } from 'reactstrap';
 import { HiArrowLongLeft, HiPencilSquare, HiXMark } from 'react-icons/hi2';
 import axios from 'axios';
 import '../assets/styles/arrow-appearance.css'
-import patientimg from '../assets/images/undraw_personal_information_re_vw8a.svg'
 
 const ViewPatientData = () => {
   const { id } = useParams();
@@ -378,9 +377,6 @@ const ViewPatientData = () => {
                 }
               </div>)
             }
-          </Col>
-          <Col>
-              <img src={patientimg} alt="patient information image" className='sm:hidden md:hidden lg:block'/>
           </Col>
         </Row>
       </Container>

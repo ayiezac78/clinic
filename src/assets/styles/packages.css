@@ -1,11 +1,11 @@
-button {
+.btn-subscribe {
   padding: 0;
   margin: 0;
   border: none;
   background: none;
 }
 
-button {
+.btn-subscribe {
   --primary-color: #111;
   --hovered-color: #164B2F;
   position: relative;
@@ -16,14 +16,14 @@ button {
   align-items: center;
 }
 
-button p {
+.btn-subscribe p {
   margin: 0;
   position: relative;
   font-size: 16px;
   color: var(--primary-color)
 }
 
-button::after {
+.btn-subscribe::after {
   position: absolute;
   content: "";
   width: 0;
@@ -34,7 +34,7 @@ button::after {
   transition: 0.3s ease-out;
 }
 
-button p::before {
+.btn-subscribe p::before {
   position: absolute;
 /*   box-sizing: border-box; */
   content: "Subscribe";
@@ -45,20 +45,20 @@ button p::before {
   transition: 0.3s ease-out;
 }
 
-button:hover::after {
+.btn-subscribe:hover::after {
   width: 100%;
 }
 
-button:hover p::before {
+.btn-subscribe:hover p::before {
   width: 100%;
 }
 
-button:hover svg {
+.btn-subscribe:hover svg {
   transform: translateX(4px);
   color: var(--hovered-color)
 }
 
-button svg {
+.btn-subscribe svg {
   color: var(--primary-color);
   transition: 0.2s;
   position: relative;
