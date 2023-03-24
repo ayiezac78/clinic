@@ -6,7 +6,7 @@ import ScrollReveal from "scrollreveal"
 
 const Aboutus = () => {
   return (
-    <div>
+    <div className="bg-[#EDFDF2]">
       <About/>
       <AboutMissionVision/>
       <CoreValues/>

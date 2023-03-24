@@ -11,6 +11,7 @@ import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
 import ViewPatientData from './components/ViewPatientData';
 import BackToTopBtn from './components/BackToTopBtn';
+import ContactUs from './pages/ContactUs';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
             <Route path='/admin' element={<AdminLogin/>}/>
             <Route path='/admindashboard' element={<AdminDashboard/>}/>
             <Route path='/viewpatient/:id' element={<ViewPatientData/>}/>
+            <Route path='/contactus' element={<ContactUs/>}/>
             <Route path='*' element={<h1>404 not found</h1>}/>
           </Routes>
             <BackToTopBtn/>

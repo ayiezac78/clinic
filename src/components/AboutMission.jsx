@@ -17,7 +17,7 @@ const AboutMissionVision = () => {
 
 
   return (
-    <div className="grid grid-cols-2 gap-8 sm:grid-cols-1 md:grid-cols-2 p-4 font-sora">
+    <div className="grid grid-cols-2 gap-8 sm:grid-cols-1 md:grid-cols-2 font-sora">
       <div className="p-8 mission">
         <h2 className="text-2xl text-green-700 font-bold mb-4">Mission</h2>
         <p className="text-base text-green-700">
