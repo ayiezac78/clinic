@@ -47,22 +47,6 @@
         "ids": "0006"
       },
       "id": "0006"
-    },
-    {
-      "patientData": {
-        "date": "25/03/2023",
-        "period": "AM",
-        "firstName": "Ariel",
-        "lastName": "Maniago",
-        "age": "28",
-        "gender": "Male",
-        "address": "asdad",
-        "emailAddress": "admaniago01@gmail.com",
-        "contactNumber": "09659051766",
-        "medicalConcern": "asdads",
-        "ids": "0007"
-      },
-      "id": "0007"
     }
   ]
 }
