@@ -12,7 +12,16 @@
   justify-items: center;
   align-items: center;
   cursor: pointer;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s, visibility 0s linear 0.3s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s;
 }
 
 .back-to-top.visible {

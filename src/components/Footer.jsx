@@ -34,7 +34,7 @@ const Footer = () => {
           </div>
           <div>
             <h3 className="mb-6 text-sm font-semibold text-[#164B2F] uppercase dark:text-[#164B2F]">
-              Helpful Links
+              Our Site
             </h3>
             <ul>
               <li className="mb-4">
@@ -90,7 +90,21 @@ const Footer = () => {
                 <Link to='/'
                   className="font-normal hover:underline"
                 >
-                  Send us suggestions
+                  Our Site Map
+                </Link>
+              </li>
+              <li className="mb-4">
+                <Link to='/'
+                  className="font-normal hover:underline"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li className="mb-4">
+                <Link to='/'
+                  className="font-normal hover:underline"
+                >
+                  Terms of Use
                 </Link>
               </li>
             </ul>

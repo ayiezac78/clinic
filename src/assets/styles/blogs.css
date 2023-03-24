@@ -1,0 +1,15 @@
+/* Define the keyframe animation */
+@keyframes animate-fade-in {
+  from {
+    opacity: 0; /* start with 0 opacity */
+  }
+  to {
+    opacity: 1; /* end with 100% opacity */
+  }
+}
+
+.fade-in {
+  animation-name: animate-fade-in;
+  animation-duration: 1s; /* animation duration in seconds */
+  animation-timing-function: ease-in-out; /* animation timing function */
+}

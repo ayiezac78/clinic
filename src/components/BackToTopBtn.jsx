@@ -25,7 +25,7 @@ const BackToTopBtn = () => {
   window.addEventListener('scroll', handleScroll);
 
   return (
-    <div className={`back-to-top ${isVisible ? 'visible' : ''}`} onClick={handleClick}>
+    <div className={`back-to-top ${isVisible ? 'visible' : ''} transition-opacity`} onClick={handleClick}>
       <IoArrowUpOutline className='relative left-[15px]'/>
     </div>
   );

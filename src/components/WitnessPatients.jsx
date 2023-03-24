@@ -36,12 +36,10 @@ const WitnessPatients = () => {
       duration: 1000,
       origin: 'bottom',
     });
-    
     sr.reveal(containerRef.current.querySelectorAll('.sr'), {
       interval: 200
     });
   }, []);
-  
 
   return (
     <section className='p-10 bg-[#609966] text-[#ECFEF2] font-sora'>
