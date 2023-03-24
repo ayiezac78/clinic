@@ -80,7 +80,7 @@ const Footer = () => {
             </h3>
             <ul>
               <li className="mb-4">
-                <Link to='/'
+                <Link to='/contactus'
                   className="font-normal hover:underline"
                 >
                   Contact us

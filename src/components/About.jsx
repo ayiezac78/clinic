@@ -15,7 +15,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="mt-32 mb-10 font-sora text-green-700">
+    <section className="py-5 mt-[93px] font-sora text-green-700">
       <h1 className="ml-10 text-5xl lg:text-5xl md:text-4xl sm:text-3xl font-bold">About Us</h1>
       <div className='flex justify-center mt-10'>
         <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center my-0 mx-auto max-w-7xl gap-4">
@@ -33,7 +33,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
     
   )
 }

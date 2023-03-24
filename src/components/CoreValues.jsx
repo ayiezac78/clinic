@@ -14,8 +14,8 @@ const CoreValues = () => {
   }, []);
 
   return (
-    <div className='grid grid-cols-1 gap-8 sm:grid-cols-1 md:grid-cols-1 px-4 font-sora mb-4'>
-      <div className='p-8 values'>
+    <div className='grid grid-cols-1 gap-8 sm:grid-cols-1 md:grid-cols-1 px-2 font-sora mb-0'>
+      <div className='p-4 values'>
       <ul>
           <h2 className="text-2xl text-green-700 font-bold mb-4">Our Core Values</h2>
           <li className='text-base text-green-700 core-list'>We commit to excellence.</li>
