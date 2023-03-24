@@ -22,8 +22,7 @@ William N. Pinque
 
 March 2023  
 TABLE OF CONTENTS
- 
-                                                                                        Page
+
  
 Title Page                                        	……………………………………..          	        	1
  
