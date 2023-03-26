@@ -19,7 +19,6 @@ const ViewPatientData = () => {
   })
   const [prescribedMedicine, setPrescribedMedicine] = useState('');
 
-  
   const paymentOptions = [
     { label: "Credit Card", value: "credit_card" },
     { label: "Debit Card", value: "debit_card" },
@@ -29,7 +28,7 @@ const ViewPatientData = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/patients/${id}`);
+        const response = await axios.get(`https://patientsapi.onrender.com/patients/${id}`);
         setPatientInfo(response.data);
         setPatientData(response.data.patientData);
         if (response.data.payment) {
@@ -71,7 +70,7 @@ const ViewPatientData = () => {
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`http://localhost:8000/patients/${id}`, { patientData, payment, prescribedMedicine });
+      const res = await axios.put(`https://patientsapi.onrender.com/patients/${id}`, { patientData, payment, prescribedMedicine });
       setPatientInfo(prevState => ({ ...prevState, patientData, payment, prescribedMedicine }));
       setPatientData(patientData);
       setPayment(payment);

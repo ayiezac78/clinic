@@ -13,14 +13,21 @@ const PatientsData = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('http://localhost:8000/patients')
-      .then(response => {
-        console.log(response.data[0]);
+    const localData = localStorage.getItem("patients");
+    if (localData) {
+      setPData(JSON.parse(localData));
+    }
+  
+    axios
+      .get("https://patientsapi.onrender.com/patients")
+      .then((response) => {
         setPData(response.data);
+        localStorage.setItem("patients", JSON.stringify(response.data));
         setIsLoading(false);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   }, []);
+  
 
   // filtering search when typing
   useEffect(() => {

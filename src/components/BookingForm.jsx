@@ -13,7 +13,7 @@ const BookingForm = () => {
 
   const fetchPatients = async () => {
     // Fetch the list of patients from the JSON API.
-    const response = await fetch('http://localhost:8000/patients');
+    const response = await fetch('https://patientsapi.onrender.com/patients');
     const patients = await response.json();
     return patients;
   };
@@ -76,13 +76,14 @@ const BookingForm = () => {
       };
   
       axios
-        .post("http://localhost:8000/patients", patient)
+        .post("https://patientsapi.onrender.com/patients", patient)
         .then((response) => {
           console.log(response);
           notify(id);
           setFormSubmitted(true);
         })
         .catch((err) => console.log(err));
+
     });
   }
   
