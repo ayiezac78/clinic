@@ -22,6 +22,7 @@ const PatientsData = () => {
       .get("https://patientsapi.onrender.com/patients")
       .then((response) => {
         setPData(response.data);
+        setFilteredData(response.data);
         localStorage.setItem("patients", JSON.stringify(response.data));
         setIsLoading(false);
       })
