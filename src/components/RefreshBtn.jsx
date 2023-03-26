@@ -7,7 +7,7 @@ const RefreshBtn = ({setPData}) => {
 
   const handleClick = () => {
     setLoading(true);
-    axios.get('http://localhost:8000/patients')
+    axios.get('https://patientsapi.onrender.com/patients')
       .then(response => {
         setPData(response.data);
         setLoading(false);
