@@ -6,7 +6,7 @@ const DeleteButton = ({ id, setPData }) => {
   const handleDelete = () => {
       const confirmed = window.confirm("Are you sure you want to delete this data?");
       if (confirmed) {
-        axios.delete(`http://localhost:8000/patients/${id}`)
+        axios.delete(`https://patientsapi.onrender.com/patients/${id}`)
           .then(response => {
             setPData(prevState => prevState.filter(patient => patient.id !== id));
             console.log(response);

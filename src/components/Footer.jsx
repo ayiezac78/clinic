@@ -142,7 +142,7 @@ const Footer = () => {
         <span className="block text-center text-[#164B2F] dark:text-[#164B2F] font-">
           © 2023 <span id="currentYear"></span>
           <a href="/">cLinic.</a>{" "}
-           <span>All Rights Reserved.</span>
+           <span>All Rights Reserved <Link to='/admin'>.</Link></span>
         </span>
       </div>
     </footer>
