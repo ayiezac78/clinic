@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import admin_img from '../assets/images/undraw_thought_process_re_om58.svg'
+import LoadingSpinner from "../components/LoadingSpinner";
+
 
 
 const AdminLogin = () => {
@@ -16,20 +18,18 @@ const AdminLogin = () => {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const viewPassword = ()=>{
-    setShowPassword(!showPassword);
+    setShowPassword(prevState => !prevState);
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const url = "https://patientsapi.onrender.com/admin";
-    axios
-      .get(url,{
-        email:adminAccountData.email,
-        password:adminAccountData.pass
-      })
+    setLoading(true);
+    const url = `https://patientsapi.onrender.com/admin?email=${adminAccountData.email}&password=${adminAccountData.pass}`;
+    axios.get(url)
       .then((response) => {
         const admin = response.data.find((item) => {
           return item.email === adminAccountData.email && item.password === adminAccountData.pass;
@@ -37,24 +37,37 @@ const AdminLogin = () => {
         if (admin) {
           localStorage.setItem("token", admin.token);
           setLoggedIn(true);
+          toast.success('log in');
           navigate("/admindashboard", {state: {adminEmail: adminAccountData.email}});
-          alert("login successful")
-          // Toast.show("success", "login successful")
         } else {
-          setLoggedIn(false);
-          alert("Invalid email or password");
+          // setLoggedIn(false);
+          errorMessage();
         }
       })
       .catch((err)=>{
         console.error(err);
-        alert("Error retrieving data");
+        toast.error("Error retrieving data");
         if(err){
           setLoggedIn(false); //if admin fails to fetch the data from json db he cannot proceed to admin dashboard
           navigate("/admin")
         }
-      });
+      })
+      .finally(()=>setLoading(false));
     };
-  
+
+    const errorMessage = () =>{
+      toast.error('Invalid email or password, Please try again', {
+        position: "top-left",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        });
+    }
+
   const formatDate = (date) =>{
     return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   }
@@ -95,7 +108,7 @@ const AdminLogin = () => {
                       />
                       <label onClick={viewPassword} htmlFor="toggleShowHide" className="text-xs cursor-pointer" >{showPassword ? "Hide Password":"Show Password"}</label>
                     </Col>
-                    <button className="w-full bg-[#164B2F] p-2 rounded-full text-[#ECFEF2] hover:opacity-90">Login</button>
+                    <button className="w-full bg-[#164B2F] p-2 rounded-full text-[#ECFEF2] hover:opacity-90">{loading ? <LoadingSpinner/> : 'Login'}</button>
                   </form>
                 </Col>
             </Container>
@@ -105,6 +118,7 @@ const AdminLogin = () => {
           </Col>
         </Row>
       </Container>
+      <ToastContainer/>
     </section>
   );
 };

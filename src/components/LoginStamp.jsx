@@ -4,7 +4,7 @@ import { Container, Row, Col } from "reactstrap";
 
 
 const LoginStamp = () => {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));
   const location = useLocation();
   const adminEmail = location.state.adminEmail;
   const [dateTime, setDateTime] = useState(new Date());
@@ -17,17 +17,16 @@ const LoginStamp = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     localStorage.removeItem('token');
-    setLoggedIn(false);
-  }
+    navigate("/admin");
+  };
+
 
   const handleAlert = () => {
-    if(window.confirm("Are you sure you want to log out?")) {
-      handleLogout();
-      navigate("/admin")
-    }
-  }
+    window.confirm("Are you sure you want to log out?") && handleLogout();
+  };
+
 
   return (
     <Container className="md:px-10">

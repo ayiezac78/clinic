@@ -28,6 +28,7 @@ const BookingForm = () => {
     return newId.toString().padStart(4, '0');
   };
 
+  const [isLoading, setIsLoading] = useState(false);
 
   const [patientData, setPatientData] = useState({
     date: '',
@@ -40,7 +41,7 @@ const BookingForm = () => {
     emailAddress:'',
     contactNumber:'',
     medicalConcern:'',
-    ids: generateIncrementalId()
+    ids: ''
   })
 
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -55,6 +56,7 @@ const BookingForm = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setIsLoading(true);
     generateIncrementalId().then((id) => {
       const dateParts = patientData.date.split("-"); // Split the date string into an array of parts
       const formattedDate = `${dateParts[2]}/${dateParts[1]}/${dateParts[0]}`; // Format the date as MM/DD/YYYY
@@ -81,15 +83,23 @@ const BookingForm = () => {
           console.log(response);
           notify(id);
           setFormSubmitted(true);
+          setPatientData({
+            ...patientData,
+            ids: id
+          });
+          setIsLoading(false);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err)
+          setIsLoading(false);
+        });
 
     });
   }
-  
+
 
   const notify = (ids) =>{
-    toast.success(`Successfully Submitted! Your appointment ID is ${ids}., See you!`, {
+    toast.success(`Successfully Submitted! Your Appointment ID is ${ids}., See you!`, {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -241,7 +251,7 @@ const BookingForm = () => {
             </Row>
             <Row className="mt-3">
               <Col>
-                <button className="w-full bg-[#164B2F] p-2 rounded-full text-[#ECFEF2] hover:opacity-90">Set Appointment</button>
+                <button className="w-full bg-[#164B2F] p-2 rounded-full text-[#ECFEF2] hover:opacity-90">{isLoading ? 'Generating Appointment ID...' : 'Set Appointment'}</button>
               </Col>
             </Row>
           </form>
