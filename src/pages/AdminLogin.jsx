@@ -24,7 +24,7 @@ const AdminLogin = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const url = "http://localhost:3000/admin";
+    const url = "https://patientsapi.onrender.com/admin";
     axios
       .get(url,{
         email:adminAccountData.email,
