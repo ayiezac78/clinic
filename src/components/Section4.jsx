@@ -2,8 +2,7 @@ import { Container, Col, Row } from 'reactstrap';
 import howitworks from '../assets/images/2203_w037_n003_239b_p1_239-removebg-preview.png'
 import ScrollReveal from 'scrollreveal';
 import { useEffect } from 'react';
-import {HiOutlineDocumentText} from "react-icons/hi2";
-import {IoMailOpenOutline} from "react-icons/io5"
+import {IoMailOpenOutline, IoNotificationsOutline} from "react-icons/io5"
 import {BsCalendarEvent} from "react-icons/bs"
 
 const Section4 = () => {
@@ -31,7 +30,7 @@ const Section4 = () => {
                 <div className="sm:p-5 font-bold">
                   <p className="mb-2 sm:text-sm lg:text-sm text-left-animate">
                     <span>
-                      <BsCalendarEvent className='w-5 h-5 inline-block mr-2'/>
+                      <BsCalendarEvent className='w-6 h-6 inline-block mr-2'/>
                     </span>
                     <span>CHOOSE APPOINTMENT SCHEDULE.</span>
                   </p>
@@ -56,16 +55,9 @@ const Section4 = () => {
                   </p>
                   <p className="mb-2 sm:text-sm lg:text-sm text-left-animate">
                     <span>
-                      <IoMailOpenOutline className='w-6 h-6 inline-block mr-2'/>
+                      <IoNotificationsOutline className='w-6 h-6 inline-block mr-2'/>
                     </span>
-                    <span>WAIT FOR A CONFIRMATION VIA EMAIL</span>
-                  </p>
-                  <p className="mb-2 sm:text-sm lg:text-sm text-left-animate">
-                    <span>
-                    <HiOutlineDocumentText className='w-6 h-6 inline-block mr-2'/>
-                    </span>
-                    BRING A DIGITAL OR PRINTED COPY EMAIL CONFIRMATION WHEN YOU
-                    VISIT
+                    <span>WAIT & GET YOUR APPOINTMENT ID TO POP UP ON THE BROWSER.</span>
                   </p>
                 </div>
             </div>

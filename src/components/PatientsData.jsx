@@ -82,7 +82,7 @@ const PatientsData = () => {
               <th scope="col" className="px-6 py-3">Contact Number</th>
               <th scope="col" className="px-6 py-3">Address</th>
               <th scope="col" className="px-6 py-3"> Medical Concern</th>
-              <th scope="col" className="px-6 py-3">Paid</th>
+              {/* <th scope="col" className="px-6 py-3">Paid</th> */}
               <th scope="col" className="px-6 py-3">Actions</th>
             </tr>
           </thead>
@@ -104,7 +104,7 @@ const PatientsData = () => {
                           <td className="px-6 py-4">{patient.patientData.contactNumber}</td>
                           <td className="px-6 py-4">{patient.patientData.address}</td>
                           <td className="px-6 py-4">{patient.patientData.medicalConcern}</td>
-                          <td className="px-6 py-4">{patient.payment ? (patient.payment.paid ? 'Yes' : 'No') : 'N/A'}</td>
+                          {/* <td className="px-6 py-4">{patient.payment ? (patient.payment.paid ? 'Yes' : 'No') : 'N/A'}</td> */}
                           <td className="px-6 py-4 flex items-center">
                             <Link
                               to={`/viewpatient/${patient.id}`}

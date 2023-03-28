@@ -15,18 +15,18 @@ const ViewPatientData = () => {
   const [patientData, setPatientData] = useState(null);
   const [unsavedChanges, setUnsavedChanges] = useState(false);
   const navigate = useNavigate();
-  const [payment, setPayment] = useState({
-    paid: false,
-    amount: 0,
-    options: ''
-  })
+  // const [payment, setPayment] = useState({
+  //   paid: false,
+  //   amount: 0,
+  //   options: ''
+  // })
   const [prescribedMedicine, setPrescribedMedicine] = useState('');
 
-  const paymentOptions = [
-    { label: "Credit Card", value: "credit_card" },
-    { label: "Debit Card", value: "debit_card" },
-    { label: "Cash", value: "cash" },
-  ];
+  // const paymentOptions = [
+  //   { label: "Credit Card", value: "credit_card" },
+  //   { label: "Debit Card", value: "debit_card" },
+  //   { label: "Cash", value: "cash" },
+  // ];
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,9 +36,9 @@ const ViewPatientData = () => {
         const response = await axios.get(`https://patientsapi.onrender.com/patients/${id}`);
         setPatientInfo(response.data);
         setPatientData(response.data.patientData);
-        if (response.data.payment) {
-          setPayment(response.data.payment);
-        }
+        // if (response.data.payment) {
+        //   setPayment(response.data.payment);
+        // }
         setUnsavedChanges(false);
         setIsLoading(false);
       } catch (error) {
@@ -54,15 +54,15 @@ const ViewPatientData = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     switch (name) {
-      case "paymentOption":
-        const option = paymentOptions.find((opt) => opt.value === value);
-        setPayment({
-          ...payment,
-          options: option.value,
-          paid: true,
-          amount: 100,
-        });
-        break;
+      // case "paymentOption":
+      //   const option = paymentOptions.find((opt) => opt.value === value);
+      //   setPayment({
+      //     ...payment,
+      //     options: option.value,
+      //     paid: true,
+      //     amount: 100,
+      //   });
+      //   break;
       case "prescribedMedicine":
         setPrescribedMedicine(value);
         setUnsavedChanges(true);
@@ -84,8 +84,8 @@ const ViewPatientData = () => {
     e.preventDefault();
     try {
       setIsLoading(true);
-      await axios.put(`https://patientsapi.onrender.com/patients/${id}`, { patientData, payment, prescribedMedicine });
-      setPatientInfo(prevState => ({ ...prevState, patientData, payment, prescribedMedicine }));
+      await axios.put(`https://patientsapi.onrender.com/patients/${id}`, { patientData, prescribedMedicine });
+      setPatientInfo(prevState => ({ ...prevState, patientData, prescribedMedicine }));
       setEditMode(false);
       setUnsavedChanges(false);
     } catch (error) {
@@ -123,7 +123,7 @@ const ViewPatientData = () => {
     <section className="py-20 mt-[85px] bg-[#EDFDF2] font-sora">
       <Container className="grid place-items-center px-24 sm:p-1">
         {isLoading ? (
-          <Spinner size='xl' color='success'/>
+          <p className='text-normal'>Loading... Please Wait..</p>
           ):(
         <>
           {patientInfo && (
@@ -267,7 +267,7 @@ const ViewPatientData = () => {
                                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline resize-none"
                                 />
                               </div>
-                              <div className="mb-4">
+                              {/* <div className="mb-4">
                                 <label htmlFor="paid" className="block font-bold mb-2">
                                   Paid:
                                 </label>
@@ -318,7 +318,7 @@ const ViewPatientData = () => {
                                     </option>
                                   ))}
                                 </select>
-                              </div>
+                              </div> */}
                               <div className="mb-4">
                               <label htmlFor="prescribedMedicine">Prescribed Medicine:</label>
                                 <textarea type="text" id="prescribedMedicine" name="prescribedMedicine" value={prescribedMedicine} onChange={handleInputChange} className="w-full resize-none rounded" />
@@ -379,7 +379,7 @@ const ViewPatientData = () => {
                               <p className="font-bold">Prescribed Medicine:</p>
                               <p>{prescribedMedicine}</p>
                             </div>
-                            <div className="mb-4">
+                            {/* <div className="mb-4">
                               <strong>Paid:</strong> {payment ? (payment.paid ? "Yes" : "No") : "N/A"}
                             </div>
                             <div className="mb-4">
@@ -388,7 +388,7 @@ const ViewPatientData = () => {
                             <div className="mb-4">
                               <strong>Payment Options:</strong>{" "}
                               {paymentOptions.find(option => option.value === payment.options)?.label}
-                            </div>
+                            </div> */}
                           </>
                         )
                       }
