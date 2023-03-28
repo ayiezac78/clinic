@@ -1,16 +1,26 @@
 import React from 'react';
-import { useState } from 'react';
+import { useRef } from 'react';
 import {HiOutlineMapPin} from 'react-icons/hi2'
 import {IoMailOutline, IoPhonePortraitOutline} from 'react-icons/io5'
+import emailjs from '@emailjs/browser'
+import { ToastContainer, toast } from 'react-toastify';
 
 const Contact = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const form = useRef();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // handle form submission here
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_pdq9tkf', 'template_nvxw62m', form.current, 'bKcqy7RF97RNVRq5J')
+      .then((result) => {
+          console.log(result.text);
+          toast.success("Message Sent")
+      }).catch((error) => {
+          console.log(error.text);
+          toast.error("Failed to send message, please try again");
+      });
+
+      e.target.reset();
   };
 
   return (
@@ -26,7 +36,7 @@ const Contact = () => {
           </p>
           <p className="text-gray-500 mb-2">
             <IoMailOutline className="w-5 h-5 inline-block mr-2"/>
-            clinic@gmail.com
+            contactusclinic@gmail.com
           </p>
           <p className="text-gray-500">
             <IoPhonePortraitOutline className="w-5 h-5 inline-block mr-2"/>
@@ -36,15 +46,14 @@ const Contact = () => {
       </div>
       <div className="flex flex-col justify-center items-center bg-white p-4 md:p-8">
         <h2 className="text-xl font-bold mb-4">Get in Touch</h2>
-        <form onSubmit={handleSubmit} className="w-full max-w-lg">
+        <form ref={form} onSubmit={sendEmail} className="w-full max-w-lg">
           <div className="mb-4">
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="name"
               type="text"
               placeholder="Your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              name='user_name'
             />
           </div>
           <div className="mb-4">
@@ -53,8 +62,7 @@ const Contact = () => {
               id="email"
               type="email"
               placeholder="Your email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name='user_email'
             />
           </div>
           <div className="mb-4">
@@ -63,23 +71,22 @@ const Contact = () => {
               id="message"
               rows="6"
               placeholder="Your message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              name='message'
             ></textarea>
           </div>
-          <div className="
-      mb-4">
-      <button
-        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        type="submit"
-      >
-        Send
-      </button>
+          <div className="mb-4">
+          <button
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Send
+          </button>
+          </div>
+        </form>
+        <ToastContainer/>
+      </div>
     </div>
-  </form>
-</div>
-</div>
-);
+  );
 };
 
 export default Contact;

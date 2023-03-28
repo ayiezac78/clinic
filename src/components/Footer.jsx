@@ -27,7 +27,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-4">
                  <span className="inline-flex mr-2"><IoMailOutline/></span>
-                  <span>inquire@clinic.com</span>
+                  <span><a href="mailto:contactusclinic@gmail.com">contactusclinic@gmail.com</a></span>
                 </li>
               </ul>
             </div>
@@ -86,7 +86,7 @@ const Footer = () => {
                   Contact us
                 </Link>
               </li>
-              <li className="mb-4">
+              {/* <li className="mb-4">
                 <Link to='/'
                   className="font-normal hover:underline"
                 >
@@ -106,7 +106,7 @@ const Footer = () => {
                 >
                   Terms of Use
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <div>

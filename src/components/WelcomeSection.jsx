@@ -37,7 +37,7 @@ const WelcomeSection = () => {
             <Phonehero className="mr-2" />
           </a>
           <a
-            href="mailto:info@clinic.com"
+            href="mailto:contactusclinic@gmail.com"
             className="flex items-center text-base md:text-lg lg:text-xl"
           >
             <Emailicon className="mr-2" />
