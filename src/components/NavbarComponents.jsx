@@ -46,7 +46,7 @@ const NavbarComponents = () => {
     <nav className={`shadow w-full ${scrollPos && navbar > 0 ? 'navbar active':'navbar'} fixed top-0 left-0 z-10`}>
       <div className="md:flex items-center justify-between py-4 md:px-10 px-7">
         <div className="font-bold text-2xl flex items-center font-sora mr-1 pt-2">
-          <Link to='/'>cLinic.</Link>
+          <Link to='/'>AWR cLinic</Link>
         </div>
         <div onClick={()=>setOpen(!open)} className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden">
           <ion-icon name={open ? 'close' : 'menu-outline'}></ion-icon>
