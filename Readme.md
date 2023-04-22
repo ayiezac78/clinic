@@ -7,7 +7,7 @@ CLINIC MANAGEMENT SYSTEM AND SERVICES
  
  
  
-A Mini-project Presented for the
+A Major-project Presented for the
 Full Stack Developer
 Course
 The Kodego.PH Academy, Philippines
