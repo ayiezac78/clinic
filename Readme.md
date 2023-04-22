@@ -19,6 +19,7 @@ by
  
 Ariel D. Maniago
 William N. Pinque
+Rosie C. Conde
 
 March 2023  
 TABLE OF CONTENTS
