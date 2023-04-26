@@ -48,7 +48,7 @@ function AppointmentForm() {
     setIsLoading(true);
     const appointment_id = await generateIncrementalId();
     axios
-      .post('http://localhost:8000/api/appointments/store', { ...data, appointment_id })
+      .post('https://clinicapi.tech/api/appointments/store', { ...data, appointment_id })
       .then((response) => {
         console.log(response);
         // Send email notification to patient
